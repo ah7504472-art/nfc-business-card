@@ -118,7 +118,7 @@ function copyToClipboard(text) {
     });
 }
 
-// Mobile menu toggle (if needed)
+// Mobile menu toggle
 function toggleMenu() {
     const menu = document.querySelector('.mobile-menu');
     if (menu) {
@@ -153,10 +153,6 @@ document.addEventListener('keydown', function(e) {
             window.history.back();
         }
     }
-    // C to call
-    if (e.ctrlKey && e.key === 'c') {
-        e.preventDefault();
-    }
     // M to open WhatsApp
     if (e.key === 'm' || e.key === 'M') {
         // Only if not typing in input
@@ -166,7 +162,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Theme toggle (if needed)
+// Theme functions
 let currentTheme = 'cyber-neon';
 
 function setTheme(themeName) {
@@ -249,13 +245,6 @@ function debounce(func, delay) {
 const debouncedParallax = debounce(parallaxEffect, 10);
 window.addEventListener('scroll', debouncedParallax);
 
-// Service Worker registration (if available)
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(() => {
-        // Service worker not available, continue without it
-    });
-}
-
 // Page visibility API - pause animations when tab is hidden
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
@@ -271,28 +260,6 @@ if (isMobileDevice()) {
         // Enable :active styles on iOS
     }, false);
 }
-
-// Add print styles
-const printStyle = document.createElement('style');
-printStyle.textContent = `
-    @media print {
-        .back-button,
-        .action-buttons,
-        .save-contact-section {
-            display: none;
-        }
-        
-        body {
-            background: white;
-        }
-        
-        .card {
-            box-shadow: none;
-            border: 1px solid #ccc;
-        }
-    }
-`;
-document.head.appendChild(printStyle);
 
 // Load preferred theme on page load
 document.addEventListener('DOMContentLoaded', function() {
