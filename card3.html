@@ -3,69 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayad Eissa - Minimal Dark Card</title>
+    <title>Ayad Eissa - Premium Digital Business Card</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: -60px;
+            left: 0;
+            z-index: 50;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-back:hover {
+            background: #00d4ff;
+            color: #0a0e27;
+            transform: translateX(-5px);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 35px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero-banner {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(10, 14, 39, 0.8) 100%);
+        }
+
+        .neon-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .card-content {
+            padding: 0;
+            position: relative;
+        }
+
+        .profile-section {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-section {
+            padding: 0 30px 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-item:hover {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: #00d4ff;
+            transform: translateX(8px);
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            min-width: 24px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .contact-value {
+            display: block;
+            font-size: 1rem;
+            color: #ffffff;
+            font-weight: 500;
+            word-break: break-word;
+        }
+
+        .actions-section {
+            padding: 0 30px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .action-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px 16px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 153, 255, 0.1) 100%);
+            border: 1.5px solid #00d4ff;
+            border-radius: 16px;
+            color: #00d4ff;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            color: #0a0e27;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .action-button-icon {
+            font-size: 1.8rem;
+        }
+
+        .save-button {
+            grid-column: 1 / -1;
+            padding: 18px;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            border: none;
+            border-radius: 16px;
+            color: #0a0e27;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .save-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .save-button-icon {
+            font-size: 1.3rem;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .profile-name {
+                font-size: 2rem;
+            }
+
+            .profile-section {
+                padding: 35px 25px;
+            }
+
+            .contact-section,
+            .actions-section {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .contact-item {
+                padding: 16px 18px;
+                margin-bottom: 14px;
+            }
+
+            .hero-banner {
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+            }
+
+            .profile-name {
+                font-size: 1.8rem;
+            }
+
+            .profile-section {
+                padding: 30px 20px;
+                margin-bottom: 10px;
+            }
+
+            .contact-section,
+            .actions-section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .contact-item {
+                padding: 14px 16px;
+                margin-bottom: 12px;
+            }
+
+            .action-button {
+                padding: 18px 14px;
+                gap: 8px;
+                font-size: 0.85rem;
+            }
+
+            .action-button-icon {
+                font-size: 1.5rem;
+            }
+
+            .save-button {
+                padding: 16px;
+                font-size: 0.95rem;
+            }
+
+            .hero-banner {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
-<body class="minimal-dark-theme">
-    <div class="card-container">
+<body>
+    <div class="container">
         <div class="back-button">
             <a href="index.html" class="btn-back">← Back</a>
         </div>
 
-        <div class="card minimal-dark-card">
-            <div class="card-bg minimal"></div>
-            
+        <div class="card">
+            <div class="hero-banner">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=300&fit=crop" alt="Ayad Eissa">
+                <div class="hero-overlay"></div>
+                <div class="neon-glow"></div>
+            </div>
+
             <div class="card-content">
-                <div class="avatar-container">
-                    <div class="avatar-frame minimal">
-                        <img src="https://via.placeholder.com/200?text=Ayad+Eissa" alt="Ayad Eissa" class="avatar">
-                        <div class="avatar-border"></div>
-                    </div>
+                <div class="profile-section">
+                    <h1 class="profile-name">Ayad Eissa</h1>
                 </div>
 
-                <div class="info-section">
-                    <h1 class="name minimal">Ayad Eissa</h1>
-                    <p class="title">Digital Professional</p>
-                    <p class="subtitle">Creative & Innovative</p>
-                </div>
-
-                <div class="divider minimal-divider"></div>
-
-                <div class="contact-info">
-                    <div class="contact-item minimal">
-                        <span class="icon">📱</span>
-                        <div class="contact-text">
-                            <span class="label">Phone</span>
-                            <span class="value">+20 100 459 4168</span>
+                <div class="contact-section">
+                    <div class="contact-item" onclick="call()">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-info">
+                            <span class="contact-label">Phone</span>
+                            <span class="contact-value">+20 100 459 4168</span>
                         </div>
                     </div>
-                    <div class="contact-item minimal">
-                        <span class="icon">📧</span>
-                        <div class="contact-text">
-                            <span class="label">Email</span>
-                            <span class="value">ayadeissa24@gmail.com</span>
+
+                    <div class="contact-item" onclick="email()">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-info">
+                            <span class="contact-label">Email</span>
+                            <span class="contact-value">ayadeissa24@gmail.com</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="action-buttons minimal-buttons">
-                    <button class="btn-action minimal" onclick="call()">
-                        <span class="icon">📞</span>
+                <div class="actions-section">
+                    <button class="action-button" onclick="call()">
+                        <span class="action-button-icon">📞</span>
                         <span>Call</span>
                     </button>
-                    <button class="btn-action minimal" onclick="whatsapp()">
-                        <span class="icon">💬</span>
+
+                    <button class="action-button" onclick="whatsapp()">
+                        <span class="action-button-icon">💬</span>
                         <span>WhatsApp</span>
                     </button>
-                    <button class="btn-action minimal" onclick="email()">
-                        <span class="icon">✉️</span>
-                        <span>Email</span>
-                    </button>
-                </div>
 
-                <div class="save-contact-section">
-                    <button class="btn-save minimal" onclick="downloadVCF()">
-                        <span class="icon">💾</span>
+                    <button class="save-button" onclick="downloadVCF()">
+                        <span class="save-button-icon">💾</span>
                         <span>Save Contact</span>
                     </button>
                 </div>
@@ -73,17 +379,19 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>
     <script>
         function call() {
             window.location.href = 'tel:+201004594168';
         }
+
         function whatsapp() {
             window.location.href = 'https://wa.me/201004594168';
         }
+
         function email() {
             window.location.href = 'mailto:ayadeissa24@gmail.com';
         }
+
         function downloadVCF() {
             const link = document.createElement('a');
             link.href = 'contact.vcf';
@@ -91,7 +399,62 @@
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            
+            // Show notification
+            showNotification('Contact saved!');
         }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+                animation: slideInNotif 0.3s ease-out;
+                z-index: 1000;
+                font-weight: 600;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutNotif 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Add notification animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInNotif {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutNotif {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
