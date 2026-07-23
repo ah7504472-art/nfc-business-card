@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayad Eissa - Cyber Neon Card</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="cyber-neon-theme">
+    <div class="card-container">
+        <div class="back-button">
+            <a href="index.html" class="btn-back">← Back</a>
+        </div>
+
+        <div class="card cyber-neon-card">
+            <div class="card-bg"></div>
+            <div class="card-glow"></div>
+            
+            <div class="card-content">
+                <div class="avatar-container">
+                    <div class="avatar-frame">
+                        <img src="https://via.placeholder.com/200?text=Ayad+Eissa" alt="Ayad Eissa" class="avatar">
+                        <div class="avatar-ring"></div>
+                        <div class="avatar-glow"></div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h1 class="name neon-text">Ayad Eissa</h1>
+                    <p class="title">Digital Professional</p>
+                    <p class="subtitle">Creative & Innovative</p>
+                </div>
+
+                <div class="divider neon-divider"></div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon">📱</span>
+                        <span class="label">Phone</span>
+                        <span class="value">+20 100 459 4168</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📧</span>
+                        <span class="label">Email</span>
+                        <span class="value">ayadeissa24@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-action btn-call" onclick="call()">
+                        <span class="icon">📞</span>
+                        <span>Call</span>
+                    </button>
+                    <button class="btn-action btn-whatsapp" onclick="whatsapp()">
+                        <span class="icon">💬</span>
+                        <span>WhatsApp</span>
+                    </button>
+                    <button class="btn-action btn-email" onclick="email()">
+                        <span class="icon">✉️</span>
+                        <span>Email</span>
+                    </button>
+                </div>
+
+                <div class="save-contact-section">
+                    <button class="btn-save" onclick="downloadVCF()">
+                        <span class="icon">💾</span>
+                        <span>Save Contact</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-elements">
+                <div class="element element-1"></div>
+                <div class="element element-2"></div>
+                <div class="element element-3"></div>
+                <div class="element element-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        function call() {
+            window.location.href = 'tel:+201004594168';
+        }
+        function whatsapp() {
+            window.location.href = 'https://wa.me/201004594168';
+        }
+        function email() {
+            window.location.href = 'mailto:ayadeissa24@gmail.com';
+        }
+        function downloadVCF() {
+            const link = document.createElement('a');
+            link.href = 'contact.vcf';
+            link.download = 'Ayad-Eissa.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
